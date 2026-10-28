@@ -9,7 +9,7 @@ setInterval(()=>{clk.textContent=new Date().toLocaleTimeString('zh-TW',{hour12:f
   const TAU=Math.PI*2;
   let W,H,dpr;
   function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
-  size();addEventListener('resize',size);
+  size();(window.ResizeObserver?new ResizeObserver(size).observe(cv):addEventListener('resize',size));
 
   const gold=(a,g=180)=>`rgba(255,${g},70,${a})`;
   const amber=a=>`rgba(255,214,140,${a})`;

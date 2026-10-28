@@ -50,5 +50,11 @@ h1 small{display:block;font-size:.5em;color:var(--muted);font-weight:500;margin-
 .answer{margin-top:14px;white-space:pre-wrap;font-size:14.5px;line-height:1.75;max-width:72ch}
 .links{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin-top:10px}
 .links a{color:var(--cyan)}
+/* Desktop: search panel's bottom edge lines up with the rates panel; the core flexes to fill the space above it */
+@media (min-width:861px){
+  .left{display:flex;flex-direction:column}
+  .core{flex:1 1 auto;height:0;min-height:280px;aspect-ratio:auto;max-height:none}
+  .answer{max-height:260px;overflow-y:auto}
+}
 @media (prefers-reduced-motion:reduce){.core canvas{animation:none}}
 .note a{color:var(--cyan)}
