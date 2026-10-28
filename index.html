@@ -3,63 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>保險情報中樞</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
-<title>保險情報中樞</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<style>
-/* Layout: holographic core left (2fr) with search dock beneath; two stacked console panels right (1fr). Single committed dark look. */
-:root{
-  --bg:#06070a; --panel:#0c0e13; --line:#2a2f3a; --fg:#eef0f4; --muted:#8c93a3;
-  --gold:#f5b43a; --gold-dim:#8a6420; --cyan:#5ec8ff;
-  --f-display:"Chakra Petch","Noto Sans TC",system-ui,sans-serif;
-  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  color-scheme:dark;
-}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6}
-.wrap{max-width:1240px;margin:0 auto;padding-block:24px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:20px}
-@media (max-width:860px){.wrap{grid-template-columns:1fr}}
-.left{display:grid;gap:16px;min-width:0}
-.right{display:grid;gap:16px;align-content:start;min-width:0}
-.core{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1/1;max-height:640px;width:100%;max-width:100%;background:radial-gradient(circle at 50% 50%,#1a1408 0%,#0a0d16 55%,#05060a 100%);border:1px solid var(--line)}
-.core canvas{width:100%;height:100%;display:block}
-.core .hud{position:absolute;inset:auto 16px 14px 16px;display:flex;justify-content:space-between;font:12px/1 var(--f-display);letter-spacing:.12em;color:var(--gold-dim);text-transform:uppercase}
-.core .hud b{color:var(--gold);font-weight:600}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
-.eyebrow{font:600 11px/1 var(--f-display);letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin:0 0 8px}
-h1{font:700 clamp(26px,3vw,34px)/1.2 var(--f-body);margin:0;text-wrap:balance}
-h1 small{display:block;font-size:.5em;color:var(--muted);font-weight:500;margin-top:6px}
-.news{display:grid;gap:12px;margin-top:14px}
-.news article{border-top:1px solid var(--line);padding-top:12px}
-.news h3{font-size:15px;margin:0 0 4px;line-height:1.45}
-.news p{margin:0;color:var(--muted);font-size:13.5px}
-.news .meta{font:12px var(--f-display);color:var(--gold-dim);letter-spacing:.05em}
-.news a{color:var(--cyan)}
-.btn{font:600 13px var(--f-body);color:#140d00;background:var(--gold);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
-.btn:disabled{opacity:.5;cursor:default}
-.btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-dim)}
-.btn:focus-visible,.chip:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
-.note{font-size:12px;color:var(--muted);margin:10px 0 0}
-.rates{display:grid;gap:0;margin-top:10px}
-.rate{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-top:1px solid var(--line)}
-.rate .k{font-weight:500}
-.rate .v{font:600 22px/1.1 var(--f-display);color:var(--gold);font-variant-numeric:tabular-nums;text-align:right}
-.rate .s{grid-column:1/-1;font-size:12px;color:var(--muted)}
-.search{position:relative}
-.chips{display:flex;gap:6px;margin-bottom:10px}
-.chip{font:500 13px var(--f-body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 14px;cursor:pointer}
-.chip[aria-pressed="true"]{color:#140d00;background:var(--gold);border-color:var(--gold)}
-.bar{display:flex;gap:8px}
-.bar input{flex:1;min-width:0;background:#05060a;color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:15px var(--f-body)}
-.answer{margin-top:14px;white-space:pre-wrap;font-size:14.5px;line-height:1.75;max-width:72ch}
-.links{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin-top:10px}
-.links a{color:var(--cyan)}
-@media (prefers-reduced-motion:reduce){.core canvas{animation:none}}
-</style>
-
 <div class="wrap">
   <div class="left">
     <div class="core" aria-hidden="true">
@@ -106,88 +57,9 @@ h1 small{display:block;font-size:.5em;color:var(--muted);font-weight:500;margin-
         <div class="rate"><span class="k">台幣一年期定存</span><span class="v">1.700%</span><span class="s">固定利率，一般金額；機動 1.690%</span></div>
         <div class="rate"><span class="k">美金一年期定存</span><span class="v">2.05%</span><span class="s">牌告利率，資料日期 2026/10/28</span></div>
       </div>
-      <p class="note">實際以承作當日銀行公告為準。<a href="https://rate.bot.com.tw/xrt?lang=zh-TW" target="_blank" rel="noopener" style="color:var(--cyan)">查看最新匯率</a></p>
+      <p class="note">實際以承作當日銀行公告為準。<a href="https://rate.bot.com.tw/xrt?lang=zh-TW" target="_blank" rel="noopener">查看最新匯率</a></p>
     </section>
   </div>
 </div>
-
-<script>
-/* ---------- clock ---------- */
-const clk=document.getElementById('clock');
-setInterval(()=>{clk.textContent=new Date().toLocaleTimeString('zh-TW',{hour12:false})},1000);
-
-/* ---------- holographic orb ---------- */
-(function(){
-  const cv=document.getElementById('orb'),ctx=cv.getContext('2d');
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W,H,dpr;
-  function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
-  size();addEventListener('resize',size);
-  // rings: radius factor, speed, segments
-  const rings=[];for(let i=0;i<14;i++)rings.push({r:.12+i*.026,sp:(i%2?1:-1)*(.08+Math.random()*.25),seg:Math.floor(8+Math.random()*22),off:Math.random()*6.28,w:1+Math.random()*2.2,tilt:Math.random()*.5+.5});
-  const sparks=Array.from({length:260},()=>({a:Math.random()*6.28,r:.1+Math.random()*.38,sp:(Math.random()-.5)*.6,s:Math.random()*1.8+.4}));
-  function frame(t){
-    t/=1000;const cx=W/2,cy=H/2,R=Math.min(W,H);
-    ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';
-    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.45);g.addColorStop(0,'rgba(245,180,58,.35)');g.addColorStop(.4,'rgba(245,140,30,.08)');g.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-    rings.forEach((rg,i)=>{
-      const rr=rg.r*R,step=6.283/rg.seg;
-      ctx.save();ctx.translate(cx,cy);ctx.scale(1,rg.tilt+.2*Math.sin(t*.3+i));ctx.rotate(rg.off+t*rg.sp);
-      ctx.strokeStyle=`rgba(255,${170+i*4},70,${.35+.4*Math.sin(t+i)**2})`;ctx.lineWidth=rg.w;
-      for(let s=0;s<rg.seg;s++){if((s*7+i)%3===0)continue;ctx.beginPath();ctx.arc(0,0,rr,s*step,s*step+step*.6);ctx.stroke()}
-      ctx.restore();
-    });
-    sparks.forEach(p=>{const a=p.a+t*p.sp,x=cx+Math.cos(a)*p.r*R,y=cy+Math.sin(a)*p.r*R*.92;ctx.fillStyle=`rgba(255,210,120,${.4+.6*Math.random()})`;ctx.fillRect(x,y,p.s,p.s)});
-    ctx.globalCompositeOperation='source-over';
-    if(!reduce)requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-})();
-
-/* ---------- search modes ---------- */
-let mode='法規';
-const chips=[...document.querySelectorAll('.chip')];
-const ph={法規:'例：保險法第64條 告知義務',判例:'例：最高法院 實支實付 理賠爭議',條款:'例：住院醫療保險 日間住院 定義'};
-chips.forEach(c=>c.addEventListener('click',()=>{mode=c.dataset.mode;chips.forEach(x=>x.setAttribute('aria-pressed',x===c));document.getElementById('q').placeholder=ph[mode]}));
-const refLinks={
-  法規:[['全國法規資料庫','https://law.moj.gov.tw/'],['金管會保險局','https://www.ib.gov.tw/']],
-  判例:[['司法院裁判書查詢','https://judgment.judicial.gov.tw/FJUD/default.aspx'],['金融消費評議中心','https://www.foi.org.tw/']],
-  條款:[['保險商品資訊揭露（保發中心）','https://insprod.tii.org.tw/'],['壽險公會','https://www.lia-roc.org.tw/']]
-};
-function showLinks(){document.getElementById('links').innerHTML=refLinks[mode].map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n} ↗</a>`).join('')}
-showLinks();chips.forEach(c=>c.addEventListener('click',showLinks));
-
-/* ---------- AI (sample capability) ---------- */
-let samplePromise=window.claude?.use?window.claude.use('sample'):Promise.resolve(null);
-const qbtn=document.getElementById('qbtn'),briefBtn=document.getElementById('brief'),ans=document.getElementById('ans');
-samplePromise.then(s=>{if(!s){qbtn.disabled=true;briefBtn.disabled=true;document.getElementById('briefnote').textContent='此檢視無法使用 AI 功能，請以下方官方連結查詢。'}});
-
-const sys={
-  法規:'你是台灣保險法規助理。依使用者問題，指出相關法規名稱與條號，用白話說明要點。不確定的條號請明說不確定，切勿杜撰。',
-  判例:'你是台灣保險訴訟研究助理。說明此類爭議的常見法院見解與爭點。若引用具體判決字號，只引用你確定存在的；不確定就只描述見解，並提醒使用者至司法院裁判書系統查證。',
-  條款:'你是台灣保險條款解析助理。解釋相關保單條款的常見定義、除外責任與理賠實務，並提醒各公司條款不同，應以保單為準。'
-};
-document.getElementById('qform').addEventListener('submit',async e=>{
-  e.preventDefault();const q=document.getElementById('q').value.trim();if(!q)return;
-  const sample=await samplePromise;if(!sample)return;
-  ans.hidden=false;ans.textContent='分析中…';qbtn.disabled=true;
-  try{
-    await sample(`${sys[mode]}\n以繁體中文回答，400字內，條列重點，最後一行附「查證建議」。\n\n問題：${q}`,{onText:({text})=>{ans.textContent=text}});
-  }catch(err){ans.textContent=err.code==='rate_limited'?'請求過於頻繁，請稍候再試。':'目前無法取得回覆：'+(err.message||err.code)}
-  finally{qbtn.disabled=false}
-});
-briefBtn.addEventListener('click',async()=>{
-  const sample=await samplePromise;if(!sample)return;
-  briefBtn.disabled=true;const box=document.createElement('article');box.innerHTML='<div class="meta">AI 彙整</div><p></p>';
-  const p=box.querySelector('p');p.style.whiteSpace='pre-wrap';p.textContent='彙整中…';
-  document.getElementById('news').prepend(box);
-  try{
-    await sample('你是台灣保險業分析師。請以繁體中文條列 5 項近期台灣保險業的重要監理與市場趨勢（如 IFRS 17／TW-ICS 接軌、高齡化商品、AI 應用、匯率對外幣保單影響等），每項一句話，並註明這是依既有知識整理、非即時新聞。',{onText:({text})=>{p.textContent=text}});
-  }catch(err){p.textContent=err.code==='rate_limited'?'請求過於頻繁，請稍候再試。':'目前無法彙整：'+(err.message||err.code)}
-  finally{briefBtn.disabled=false}
-});
-</script>
-
 </body>
 </html>
